@@ -16,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -161,8 +162,28 @@ public class TestCase {
 
 	@AfterMethod
 	public void tearDown() {
-		if (driver != null)
-			driver.quit();
+//		if (driver != null)
+//			driver.quit();
 		System.out.println("All the browser tabs are closed");
 	}
+	
+	@AfterMethod
+	public void updateLambdaTestStatus(ITestResult result) {
+
+	    if (driver == null) return;
+
+	    if (result.getStatus() == ITestResult.SUCCESS) {
+	        ((JavascriptExecutor) driver)
+	                .executeScript("lambda-status=passed");
+	    } else if (result.getStatus() == ITestResult.FAILURE) {
+	        ((JavascriptExecutor) driver)
+	                .executeScript("lambda-status=failed");
+	    } else {
+	        ((JavascriptExecutor) driver)
+	                .executeScript("lambda-status=skipped");
+	    }
+
+	    driver.quit();
+	}
+
 }

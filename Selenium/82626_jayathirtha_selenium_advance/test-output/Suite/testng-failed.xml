@@ -10,23 +10,9 @@
         <methods>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="lambdaTest"/>
+          <include name="lambdaTest" invocation-numbers="0"/>
         </methods>
       </class> <!-- Test_Java.Selenium_Adv.TestCase -->
     </classes>
   </test> <!-- Test Scenario 2(failed) -->
-  <test thread-count="5" parallel="tests" name="Test Scenario 1(failed)">
-    <parameter name="browser" value="Chrome"/>
-    <parameter name="version" value="128.0"/>
-    <parameter name="platform" value="Windows 10"/>
-    <classes>
-      <class name="Test_Java.Selenium_Adv.TestCase">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setup"/>
-          <include name="lambdaTest"/>
-        </methods>
-      </class> <!-- Test_Java.Selenium_Adv.TestCase -->
-    </classes>
-  </test> <!-- Test Scenario 1(failed) -->
 </suite> <!-- Failed suite [Suite] -->
